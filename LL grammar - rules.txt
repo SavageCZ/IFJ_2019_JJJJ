@@ -1,0 +1,48 @@
+//Kdekoli v hlavnim tele programu se muze vyskytnout statement nebo definice fce
+1. <program> -> <statement> <program>
+2. <program> -> <def_function> <program>
+3. <program> -> EOF
+
+//term_n je potreba pro volani fce kde muze byt vicekrat za sebou oddelen carkou
+4. <term> -> value <term_n>
+5. <term> -> id <term_n>
+6. <term> -> None <term_n>
+7. <term> -> Ɛ
+8. <term_n> -> , <term> 
+9. <term_n> -> Ɛ 
+
+//function definitions
+10. <def_function> -> def id ( <param> ) : EOL INDENT <statement_fun> DEDENT
+11. <param> -> id <param_n>
+12. <param> -> Ɛ
+13. <param_n> -> , <param>
+14. <param_n> -> Ɛ
+
+15. <statement_fun> -> <expression> EOL <statement_fun>
+16. <statement_fun> -> id <idwhat> EOL <statement_fun>
+17. <statement_fun> -> if <expression> : EOL INDENT <statement_fun> DEDENT else : EOL INDENT <statement_fun> DEDENT <statement_fun>
+18. <statement_fun> -> while <expression> : EOL INDENT <statement_fun> DEDENT <statement_fun>
+19. <statement_fun> -> pass EOL <statement_fun>
+20. <statement_fun> -> return <return_value> EOL <statement_fun>
+21. <statement_fun> -> Ɛ
+
+22. <return_value> -> <expression>
+23. <return_value> -> Ɛ 
+
+//prikazy ktere se mohou vyskytnout kdekoli v tele programu
+24. <statement> -> <expression> EOL <statement>
+25. <statement> -> id <idwhat> EOL <statement>
+26. <statement> -> if <expression> : EOL INDENT <statement> DEDENT else : EOL INDENT <statement> DEDENT <statement>
+27. <statement> -> while <expression> : EOL INDENT <statement> DEDENT <statement>
+28. <statement> -> pass EOL <statement>
+29. <statement> -> Ɛ
+
+//id muze byt bud promenna nebo nazev fce
+30. <idwhat> -> = <assign>
+31. <idwhat> -> ( <term> )
+32. <idwhat> -> Ɛ
+
+//do promenne muze byt prirazen vysledek volane fce nebo hodnota vyrazu(prirazeni jine samostatne prom. se vyhodnocuje jako vyraz)
+33. <assign> -> id( <term> )
+34. <assign> -> <expression>
+
